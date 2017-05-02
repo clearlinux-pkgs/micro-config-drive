@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 27
-Release  : 2
+Release  : 3
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v27/micro-config-drive-27.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v27/micro-config-drive-27.tar.xz
 Summary  : No detailed summary available
