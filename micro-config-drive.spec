@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 27
-Release  : 3
+Release  : 4
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v27/micro-config-drive-27.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v27/micro-config-drive-27.tar.xz
 Summary  : No detailed summary available
@@ -22,6 +22,7 @@ BuildRequires : pkgconfig(json-glib-1.0)
 BuildRequires : pkgconfig(libparted)
 BuildRequires : pkgconfig(systemd)
 BuildRequires : pkgconfig(yaml-0.1)
+Patch1: try-harder.patch
 
 %description
 A config-drive handler.
@@ -66,10 +67,14 @@ doc components for the micro-config-drive package.
 
 %prep
 %setup -q -n micro-config-drive-27
+%patch1 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493417585
+export SOURCE_DATE_EPOCH=1493945346
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -77,11 +82,11 @@ make V=1  %{?_smp_mflags}
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1493417585
+export SOURCE_DATE_EPOCH=1493945346
 rm -rf %{buildroot}
 %make_install
 
