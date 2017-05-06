@@ -11,7 +11,7 @@ index ded0bf0..ceedf1f 100644
 +"#cloud-config\n" \
 +"users:\n" \
 +"  - name: clear\n"\
-+"    groups: wheel\n"\
++"    groups: wheelnopw\n"\
 +"    ssh-authorized-keys:\n"\
 +"      - "
  
