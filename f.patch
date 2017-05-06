@@ -1,0 +1,13 @@
+diff --git a/src/ucd-aws.c b/src/ucd-aws.c
+index ded0bf0..516b3d9 100644
+--- a/src/ucd-aws.c
++++ b/src/ucd-aws.c
+@@ -87,6 +87,8 @@ static int parse_headers(FILE *f, long int *cl)
+ 			if (errno == EINVAL || errno == ERANGE) {
+ 				return 0;
+ 			}
++	        } else if (strstr(buf, "404 Not Found")) {
++			return 2;
+ 		} else if (strncmp(buf, "HTTP/1.0", 8) == 0) {
+ 			long int status = strtol(&buf[8], NULL, 10);
+ 			if (errno == EINVAL || errno == ERANGE) {
