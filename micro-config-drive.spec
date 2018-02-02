@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 30
-Release  : 8
+Release  : 9
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v30/micro-config-drive-30.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v30/micro-config-drive-30.tar.xz
 Summary  : No detailed summary available
