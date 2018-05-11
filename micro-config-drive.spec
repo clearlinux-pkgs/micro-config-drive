@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 30
-Release  : 10
+Release  : 16
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v30/micro-config-drive-30.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v30/micro-config-drive-30.tar.xz
 Summary  : No detailed summary available
@@ -14,7 +14,14 @@ Requires: micro-config-drive-bin
 Requires: micro-config-drive-autostart
 Requires: micro-config-drive-config
 Requires: micro-config-drive-doc
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : e2fsprogs-bin
+BuildRequires : gettext-bin
+BuildRequires : libtool
+BuildRequires : libtool-dev
+BuildRequires : m4
+BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(glib-2.0)
@@ -23,6 +30,7 @@ BuildRequires : pkgconfig(libparted)
 BuildRequires : pkgconfig(systemd)
 BuildRequires : pkgconfig(yaml-0.1)
 Patch1: f.patch
+Patch2: 0001-Add-OCI-integration.patch
 
 %description
 A config-drive handler.
@@ -68,15 +76,16 @@ doc components for the micro-config-drive package.
 %prep
 %setup -q -n micro-config-drive-30
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1499801262
-%configure --disable-static
-make V=1  %{?_smp_mflags}
+export SOURCE_DATE_EPOCH=1526332066
+%reconfigure --disable-static
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -86,7 +95,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1499801262
+export SOURCE_DATE_EPOCH=1526332066
 rm -rf %{buildroot}
 %make_install
 
@@ -101,11 +110,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 /usr/bin/ucd
 /usr/bin/ucd-aws
+/usr/bin/ucd-oci
 
 %files config
 %defattr(-,root,root,-)
 %exclude /usr/lib/systemd/system/multi-user.target.wants/ucd.service
 /usr/lib/systemd/system/ucd-aws.service
+/usr/lib/systemd/system/ucd-oci.service
 /usr/lib/systemd/system/ucd.service
 
 %files doc
