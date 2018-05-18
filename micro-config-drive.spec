@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 31
-Release  : 17
+Release  : 18
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v31/micro-config-drive-31.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v31/micro-config-drive-31.tar.xz
 Summary  : No detailed summary available
@@ -14,6 +14,7 @@ Requires: micro-config-drive-bin
 Requires: micro-config-drive-autostart
 Requires: micro-config-drive-config
 Requires: micro-config-drive-doc
+Requires: e2fsprogs-bin
 BuildRequires : e2fsprogs-bin
 BuildRequires : pkgconfig(blkid)
 BuildRequires : pkgconfig(check)
@@ -74,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526336228
+export SOURCE_DATE_EPOCH=1526680924
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -86,7 +87,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1526336228
+export SOURCE_DATE_EPOCH=1526680924
 rm -rf %{buildroot}
 %make_install
 
