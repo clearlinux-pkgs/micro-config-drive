@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 36
-Release  : 23
+Release  : 24
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v36/micro-config-drive-36.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v36/micro-config-drive-36.tar.xz
 Summary  : No detailed summary available
