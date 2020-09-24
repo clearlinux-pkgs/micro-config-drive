@@ -4,7 +4,7 @@
 #
 Name     : micro-config-drive
 Version  : 45
-Release  : 31
+Release  : 32
 URL      : https://github.com/clearlinux/micro-config-drive/releases/download/v45/micro-config-drive-45.tar.xz
 Source0  : https://github.com/clearlinux/micro-config-drive/releases/download/v45/micro-config-drive-45.tar.xz
 Summary  : No detailed summary available
